@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.grid-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.grid-container {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

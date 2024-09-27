@@ -1,19 +1,30 @@
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import Background from './assets/windows.jpg'
 import RGL, { WidthProvider } from "react-grid-layout";
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { motion, useTransform, useScroll } from "framer-motion"
 
 const cardData = [
-  { key: 'a', x: 0, y: 0, w: 2, h: 2, color: 'bg-green-600' },
-  { key: 'b', x: 1, y: 0, w: 1, h: 1, color: 'bg-blue-600' },
-  { key: 'c', x: 4, y: 0, w: 1, h: 1, color: 'bg-yellow-600' },
-  { key: 'd', x: 5, y: 0, w: 2, h: 2, color: 'bg-red-600' },
-  { key: 'e', x: 7, y: 0, w: 1, h: 1, color: 'bg-green-600' },
-  { key: 'f', x: 0, y: 2, w: 2, h: 1, color: 'bg-blue-600' },
-  { key: 'g', x: 2, y: 2, w: 2, h: 1, color: 'bg-yellow-600' },
-  { key: 'h', x: 4, y: 2, w: 1, h: 1, color: 'bg-red-600' },
-  { key: 'i', x: 5, y: 2, w: 2, h: 2, color: 'bg-green-600' },
-  { key: 'j', x: 6, y: 2, w: 2, h: 2, color: 'bg-blue-600' },
-  { key: 'k', x: 0, y: 3, w: 1, h: 1, color: 'bg-yellow-600' }
+  { key: 'a', x: 0, y: 0, w: 2, h: 2, color: 'bg-red-600', static: true },   // 2x2 block
+  { key: 'k', x: 6, y: 0, w: 1, h: 1, color: 'bg-cyan-600', static: true },   // 1x1 block
+  { key: 'l', x: 7, y: 0, w: 1, h: 1, color: 'bg-amber-600', static: true },  // 1x1 block
+  { key: 'b', x: 6, y: 1, w: 2, h: 2, color: 'bg-blue-600', static: true },  // 2x2 block
+  { key: 'c', x: 2, y: 0, w: 1, h: 1, color: 'bg-yellow-600', static: true }, // 1x1 block
+  { key: 'd', x: 3, y: 0, w: 1, h: 1, color: 'bg-green-600', static: true },  // 1x1 block
+  { key: 'e', x: 4, y: 0, w: 2, h: 1, color: 'bg-purple-600', static: true }, // 2x1 block
+  { key: 'e2', x: 2, y: 1, w: 2, h: 1, color: 'bg-purple-600', static: true }, // 2x1 block
+  { key: 'c2', x: 4, y: 1, w: 1, h: 1, color: 'bg-yellow-600', static: true }, // 1x1 block
+  { key: 'd2', x: 5, y: 1, w: 1, h: 1, color: 'bg-green-600', static: true },  // 1x1 block
+  { key: 'f', x: 0, y: 2, w: 1, h: 1, color: 'bg-pink-600', static: true },   // 1x1 block
+  { key: 'g', x: 1, y: 2, w: 1, h: 1, color: 'bg-orange-600', static: true }, // 1x1 block
+  { key: 'h', x: 2, y: 2, w: 2, h: 1, color: 'bg-teal-600', static: true },   // 2x1 block
+  { key: 'i', x: 4, y: 2, w: 1, h: 1, color: 'bg-indigo-600', static: true }, // 1x1 block
+  { key: 'j', x: 5, y: 2, w: 1, h: 1, color: 'bg-lime-600', static: true },   // 1x1 block
+  { key: 'm', x: 0, y: 3, w: 2, h: 1, color: 'bg-rose-600', static: true },   // 2x1 block
+  { key: 'n', x: 2, y: 3, w: 1, h: 1, color: 'bg-fuchsia-600', static: true }, // 1x1 block
+  { key: 'o', x: 3, y: 3, w: 1, h: 1, color: 'bg-blue-600', static: true },   // 1x1 block
+  { key: 'p', x: 4, y: 3, w: 1, h: 1, color: 'bg-red-600', static: true },    // 1x1 block
+  { key: 'q', x: 5, y: 3, w: 2, h: 1, color: 'bg-yellow-600', static: true }, // 2x1 block
+  { key: 'r', x: 7, y: 3, w: 1, h: 1, color: 'bg-green-600', static: true },    // 1x1 block
 ];
 
 const GridLayout = WidthProvider(RGL);
@@ -24,8 +35,8 @@ const App = () => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [layout, setLayout] = useState(cardData.map((item) => {
-    const { key, x, y, w, h } = item
-    return { i: key, x, y, w, h }
+    const { key, x, y, w, h, static: staticMode } = item
+    return { i: key, x, y, w, h, static: staticMode }
   }));
   const gridRef = useRef(null);
 
@@ -54,13 +65,20 @@ const App = () => {
   return (
     <div className='relative min-w-screen w-full max-h-screen h-screen'>
       <img src={Background} className='w-full h-screen object-cover' />
-      <div className='absolute top-0 left-0 min-w-screen w-full max-h-screen h-screen px-32 py-16 flex flex-col gap-16'>
-        <h1 className='text-5xl text-white'>Start</h1>
-        <div className='relative grid-container grow overflow-hidden' ref={gridRef}>
+      <div className='absolute top-0 left-0 max-h-screen h-screen py-16 flex flex-col gap-16'>
+        <div className='px-32'>
+          <h1 className='text-5xl text-white'>Start</h1>
+        </div>
+        <motion.div className='relative grid-container grow flex gap-16 w-screen overflow-x-scroll [&>*]:shrink-0' ref={gridRef}>
+          <div className='px-8'></div>
           {dimensions.height !== 0 && dimensions.width !== 0 && (
             <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
           )}
-        </div>
+          {dimensions.height !== 0 && dimensions.width !== 0 && (
+            <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
+          )}
+          <div className='px-8'></div>
+        </motion.div>
       </div>
     </div>
   )
@@ -104,7 +122,6 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
     <div style={style} ref={ref} key={key} className={[`p-1`, className].join(' ')} {...restOfProps}>
       <div className={`${color} w-full h-full`}>
         {keyId}
-
       </div>
       {children}
     </div>
