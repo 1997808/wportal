@@ -65,20 +65,20 @@ const App = () => {
   return (
     <div className='relative min-w-screen w-full max-h-screen h-screen'>
       <img src={Background} className='w-full h-screen object-cover' />
-      <div className='absolute top-0 left-0 max-h-screen h-screen py-16 flex flex-col gap-16'>
-        <div className='px-32'>
-          <h1 className='text-5xl text-white'>Start</h1>
+      <div className='absolute top-0 left-0 max-h-screen h-screen pt-16 pb-24 flex flex-col gap-24'>
+        <div className='px-48'>
+          <h1 className='text-7xl text-white font-light'>Start</h1>
         </div>
-        <motion.div className='relative grid-container grow flex gap-16 w-screen overflow-x-scroll [&>*]:shrink-0' ref={gridRef}>
-          <div className='px-8'></div>
+        <div className='relative grid-container grow flex gap-16 w-screen overflow-x-scroll [&>*]:shrink-0' ref={gridRef}>
+          <div className='px-16'></div>
           {dimensions.height !== 0 && dimensions.width !== 0 && (
             <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
           )}
           {dimensions.height !== 0 && dimensions.width !== 0 && (
             <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
           )}
-          <div className='px-8'></div>
-        </motion.div>
+          <div className='px-16'></div>
+        </div>
       </div>
     </div>
   )
@@ -119,10 +119,15 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
   const { keyId, color } = restOfProps
   return (
     // @ts-expect-error xdd
-    <div style={style} ref={ref} key={key} className={[`p-1`, className].join(' ')} {...restOfProps}>
-      <div className={`${color} w-full h-full`}>
+    <div style={style} ref={ref} key={key} className={[`p-1.5`, className].join(' ')} {...restOfProps}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5, x: 30, y: 30 }}
+        whileHover={{ scale: 1.05 }}
+        whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className={`${color} w-full h-full`}>
         {keyId}
-      </div>
+      </motion.div>
       {children}
     </div>
   )
