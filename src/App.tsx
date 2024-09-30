@@ -49,6 +49,48 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    const scrollContainer = gridRef.current as HTMLElement | null;
+    let scrollDelta = 0;
+    let isScrolling = false;
+
+    if (!scrollContainer) {
+      return;
+    }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const onWheel = (evt: any) => {
+      evt.preventDefault();
+      scrollDelta += evt.deltaY;
+
+      if (!isScrolling) {
+        smoothScroll();
+      }
+    };
+
+    const smoothScroll = () => {
+      isScrolling = true;
+
+      // Smoothly adjust the scroll position in small steps
+      const step = scrollDelta / 10; // Adjust value for speed
+      scrollContainer.scrollLeft += step;
+      scrollDelta -= step;
+
+      if (Math.abs(scrollDelta) > 0.5) {
+        requestAnimationFrame(smoothScroll); // Keep scrolling until near zero delta
+      } else {
+        isScrolling = false; // Stop when delta is small enough
+        scrollDelta = 0; // Reset delta
+      }
+    };
+
+    scrollContainer.addEventListener('wheel', onWheel);
+
+    return () => {
+      scrollContainer.removeEventListener('wheel', onWheel);
+    };
+  }, []);
+
   // Capture width and height after rendering
   useEffect(() => {
     updateDimensions();
@@ -69,7 +111,7 @@ const App = () => {
         <div className='px-48'>
           <h1 className='text-7xl text-white font-light'>Start</h1>
         </div>
-        <div className='relative grid-container grow flex gap-16 w-screen overflow-x-scroll [&>*]:shrink-0' ref={gridRef}>
+        <section className='relative grid-container grow flex gap-16 w-screen overflow-x-scroll [&>*]:shrink-0' ref={gridRef}>
           <div className='px-16'></div>
           {dimensions.height !== 0 && dimensions.width !== 0 && (
             <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
@@ -78,7 +120,7 @@ const App = () => {
             <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
           )}
           <div className='px-16'></div>
-        </div>
+        </section>
       </div>
     </div>
   )
