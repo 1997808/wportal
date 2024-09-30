@@ -1,7 +1,6 @@
 import { forwardRef } from 'react';
 import RGL, { WidthProvider } from "react-grid-layout";
 import { motion } from "framer-motion"
-
 const GridLayout = WidthProvider(RGL);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,7 +24,7 @@ export const GridMobile = (props: { height: number, width: number, layout: any, 
       {items.map((card: never) => {
         return (
           // @ts-expect-error xdd
-          <WCard key={card.key} keyId={card.key} color={card.color} />
+          <WCard key={card.key} keyId={card.key} color={card.color} data={card.data} />
         )
       })}
     </GridLayout>
@@ -35,7 +34,13 @@ export const GridMobile = (props: { height: number, width: number, layout: any, 
 // @ts-expect-error xdd
 const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, ref) => {
   // @ts-expect-error xdd
-  const { keyId, color } = restOfProps
+  const { keyId, color, data } = restOfProps
+  let text, Icon
+  if (data) {
+    Icon = data.Icon
+    text = data.text
+  }
+
   return (
     // @ts-expect-error xdd
     <div style={style} ref={ref} key={key} className={[`p-1`, className].join(' ')} {...restOfProps}>
@@ -44,8 +49,11 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
         whileHover={{ scale: 1.02 }}
         whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`${color} w-full h-full`}>
-        {keyId}
+        className={`${color} relative w-full h-full flex justify-center items-center`}>
+        {data && data.type === 'icon' && <Icon className="w-1/2 h-1/2 text-white" />}
+        <div className='absolute bottom-0 left-0 px-2 py-1 text-sm text-white truncate'>
+          {text ?? keyId}
+        </div>
       </motion.div>
       {children}
     </div>

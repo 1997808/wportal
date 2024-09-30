@@ -1,3 +1,42 @@
+import {
+  FileText,
+  Github,
+  LinkedinIcon,
+  LucideIcon,
+  Phone,
+  ScrollText,
+} from "lucide-react";
+
+export interface ICard {
+  key: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  color: string;
+  static?: boolean;
+  data?: {
+    type: "icon" | "text";
+    text?: string;
+    Icon?: LucideIcon;
+  };
+}
+
+export interface ICardMobile {
+  key: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  color: string;
+  static?: boolean;
+  data?: {
+    type: "icon" | "text";
+    text?: string;
+    Icon?: LucideIcon;
+  };
+}
+
 const cardData = [
   { key: "a", x: 0, y: 0, w: 2, h: 2, color: "bg-red-600", static: true }, // 2x2 block
   { key: "k", x: 6, y: 0, w: 1, h: 1, color: "bg-cyan-600", static: true }, // 1x1 block
@@ -44,32 +83,212 @@ const cardData2 = [
   { key: "t21", x: 7, y: 3, w: 1, h: 1, color: "bg-green-600", static: true }, // 1x1 block
 ];
 
-const cardMobile = [
+const cardMobile: ICardMobile[] = [
   // 2x4 highlight blocks
-  { key: "a", x: 0, y: 2, w: 4, h: 2, color: "bg-green-600", static: true },
-  { key: "b", x: 0, y: 11, w: 4, h: 2, color: "bg-blue-600", static: true },
+  {
+    key: "a",
+    x: 0,
+    y: 2,
+    w: 4,
+    h: 2,
+    color: "bg-yellow-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "b",
+    x: 0,
+    y: 11,
+    w: 4,
+    h: 2,
+    color: "bg-blue-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
 
   // 2x2 blocks
-  { key: "c", x: 0, y: 0, w: 2, h: 2, color: "bg-red-600", static: true },
-  { key: "d", x: 2, y: 0, w: 2, h: 2, color: "bg-yellow-600", static: true },
-  { key: "f", x: 2, y: 4, w: 2, h: 2, color: "bg-orange-600", static: true },
-  { key: "i", x: 0, y: 6, w: 2, h: 2, color: "bg-indigo-600", static: true },
-  { key: "j", x: 2, y: 6, w: 2, h: 2, color: "bg-lime-600", static: true },
-  { key: "g", x: 0, y: 8, w: 2, h: 2, color: "bg-teal-600", static: true },
-  { key: "h", x: 2, y: 8, w: 2, h: 2, color: "bg-pink-600", static: true },
-  { key: "k", x: 0, y: 13, w: 2, h: 2, color: "bg-gray-600", static: true },
-  { key: "l", x: 2, y: 13, w: 2, h: 2, color: "bg-amber-600", static: true },
-  { key: "e", x: 0, y: 15, w: 2, h: 2, color: "bg-purple-600", static: true },
+  {
+    key: "c",
+    x: 0,
+    y: 0,
+    w: 2,
+    h: 2,
+    color: "bg-red-600",
+    static: true,
+    data: { type: "icon", text: "Phone", Icon: Phone },
+  },
+  {
+    key: "d",
+    x: 2,
+    y: 0,
+    w: 2,
+    h: 2,
+    color: "bg-green-600",
+    static: true,
+    data: { type: "icon", text: "GitHub", Icon: Github },
+  },
+  {
+    key: "f",
+    x: 2,
+    y: 4,
+    w: 2,
+    h: 2,
+    color: "bg-orange-600",
+    static: true,
+    data: { type: "icon", text: "Blog", Icon: FileText },
+  },
+  {
+    key: "i",
+    x: 0,
+    y: 6,
+    w: 2,
+    h: 2,
+    color: "bg-indigo-600",
+    static: true,
+    data: { type: "icon", text: "LinkedIn", Icon: LinkedinIcon },
+  },
+  {
+    key: "j",
+    x: 2,
+    y: 6,
+    w: 2,
+    h: 2,
+    color: "bg-lime-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "g",
+    x: 0,
+    y: 8,
+    w: 2,
+    h: 2,
+    color: "bg-teal-600",
+    static: true,
+    data: { type: "icon", text: "Download Resume", Icon: ScrollText },
+  },
+  {
+    key: "h",
+    x: 2,
+    y: 8,
+    w: 2,
+    h: 2,
+    color: "bg-pink-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "k",
+    x: 0,
+    y: 13,
+    w: 2,
+    h: 2,
+    color: "bg-gray-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "l",
+    x: 2,
+    y: 13,
+    w: 2,
+    h: 2,
+    color: "bg-amber-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "e",
+    x: 0,
+    y: 15,
+    w: 2,
+    h: 2,
+    color: "bg-purple-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
 
   // 1x1 blocks
-  { key: "m", x: 0, y: 4, w: 1, h: 1, color: "bg-cyan-600", static: true },
-  { key: "n", x: 1, y: 4, w: 1, h: 1, color: "bg-violet-600", static: true },
-  { key: "o", x: 0, y: 5, w: 1, h: 1, color: "bg-emerald-600", static: true },
-  { key: "p", x: 1, y: 5, w: 1, h: 1, color: "bg-fuchsia-600", static: true },
-  { key: "q", x: 0, y: 10, w: 1, h: 1, color: "bg-rose-600", static: true },
-  { key: "r", x: 1, y: 10, w: 1, h: 1, color: "bg-sky-600", static: true },
-  { key: "s", x: 2, y: 10, w: 1, h: 1, color: "bg-stone-600", static: true },
-  { key: "t", x: 3, y: 10, w: 1, h: 1, color: "bg-lime-600", static: true },
+  {
+    key: "m",
+    x: 0,
+    y: 4,
+    w: 1,
+    h: 1,
+    color: "bg-cyan-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "n",
+    x: 1,
+    y: 4,
+    w: 1,
+    h: 1,
+    color: "bg-violet-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "o",
+    x: 0,
+    y: 5,
+    w: 1,
+    h: 1,
+    color: "bg-emerald-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "p",
+    x: 1,
+    y: 5,
+    w: 1,
+    h: 1,
+    color: "bg-fuchsia-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "q",
+    x: 0,
+    y: 10,
+    w: 1,
+    h: 1,
+    color: "bg-rose-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "r",
+    x: 1,
+    y: 10,
+    w: 1,
+    h: 1,
+    color: "bg-sky-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "s",
+    x: 2,
+    y: 10,
+    w: 1,
+    h: 1,
+    color: "bg-stone-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
+  {
+    key: "t",
+    x: 3,
+    y: 10,
+    w: 1,
+    h: 1,
+    color: "bg-lime-600",
+    static: true,
+    data: { type: "text", text: "Text" },
+  },
 ];
 
 export { cardData, cardData2, cardMobile };

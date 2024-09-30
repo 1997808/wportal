@@ -10,7 +10,6 @@ import { GridMobile } from './GridMobile';
 const App = () => {
   const [windows, setWindows] = useState(useWindowDimensions());
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  console.log(dimensions, '====================')
   const [layout, setLayout] = useState(cardData.map((item) => {
     const { key, x, y, w, h, static: staticMode } = item
     return { i: key, x, y, w, h, static: staticMode }
