@@ -39,12 +39,17 @@ const App = () => {
     return { i: key, x, y, w, h, static: staticMode }
   }));
   const gridRef = useRef(null);
+  const squareRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: gridRef
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
 
   const updateDimensions = () => {
     if (gridRef.current) {
       // @ts-expect-error xdd
       // eslint-disable-next-line no-unsafe-optional-chaining
-      const { width, height } = gridRef?.current?.getBoundingClientRect();
+      const { width, height } = squareRef?.current?.getBoundingClientRect();
       setDimensions({ width, height });
     }
   };
@@ -63,21 +68,37 @@ const App = () => {
   }, []);
 
   return (
-    <div className='relative min-w-screen w-full max-h-screen h-screen'>
-      <img src={Background} className='w-full h-screen object-cover' />
-      <div className='absolute top-0 left-0 max-h-screen h-screen pt-16 pb-24 flex flex-col gap-24'>
+    <div className='relative max-w-screen'>
+      {/* <img src={Background} className='w-full h-screen object-cover' /> */}
+      <div className='top-0 left-0 pt-16 pb-24 flex flex-col max-w-screen h-screen gap-24'>
         <div className='px-48'>
           <h1 className='text-7xl text-white font-light'>Start</h1>
         </div>
-        <div className='relative grid-container grow flex gap-16 w-screen overflow-x-scroll [&>*]:shrink-0' ref={gridRef}>
-          <div className='px-16'></div>
-          {dimensions.height !== 0 && dimensions.width !== 0 && (
-            <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
-          )}
-          {dimensions.height !== 0 && dimensions.width !== 0 && (
-            <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
-          )}
-          <div className='px-16'></div>
+        <div className='w-screen h-full grow' ref={squareRef}>
+
+        </div>
+      </div>
+      <div className='absolute z-10 top-0 left-0 max-w-screen h-[200vh]' ref={gridRef}>
+        <div style={{ backgroundImage: `url(${Background})` }} className='sticky top-0 w-screen h-screen overflow-hidden'>
+          <motion.div style={{ x }} className='relative pt-16 pb-24 flex flex-col gap-24'>
+            <div className='px-48 sticky'>
+              <h1 className='text-7xl text-red-500 font-light'>Start</h1>
+            </div>
+            <div className='relative grid-container grow w-screen'>
+              <div className='top-0 flex overflow-hidden'>
+                <div className='flex gap-16 [&>*]:shrink-0'>
+                  <div className='px-16'></div>
+                  {dimensions.height !== 0 && dimensions.width !== 0 && (
+                    <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
+                  )}
+                  {dimensions.height !== 0 && dimensions.width !== 0 && (
+                    <GridItem height={dimensions.height} width={dimensions.width} layout={layout} />
+                  )}
+                  <div className='px-16'></div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
