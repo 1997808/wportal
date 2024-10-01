@@ -7,6 +7,8 @@ import {
   ScrollText,
 } from "lucide-react";
 
+type TCardDataType = "icon" | "icon-img" | "img" | "text";
+
 export interface ICard {
   key: string;
   x: number;
@@ -16,9 +18,12 @@ export interface ICard {
   color: string;
   static?: boolean;
   data?: {
-    type: "icon" | "text";
+    type: TCardDataType;
     text?: string;
+    textColor?: string;
     Icon?: LucideIcon;
+    iconSrc?: string;
+    imgSrc?: string;
   };
 }
 
@@ -31,9 +36,12 @@ export interface ICardMobile {
   color: string;
   static?: boolean;
   data?: {
-    type: "icon" | "text";
+    type: TCardDataType;
     text?: string;
+    textColor?: string;
     Icon?: LucideIcon;
+    iconSrc?: string;
+    imgSrc?: string;
   };
 }
 
@@ -155,7 +163,7 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-lime-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: { type: "img", text: "Me", imgSrc: "./excited.webp" },
   },
   {
     key: "g",
@@ -215,9 +223,13 @@ const cardMobile: ICardMobile[] = [
     y: 4,
     w: 1,
     h: 1,
-    color: "bg-cyan-600",
+    color: "bg-indigo-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "Discord",
+      iconSrc: "./discord.svg",
+    },
   },
   {
     key: "n",
@@ -225,9 +237,13 @@ const cardMobile: ICardMobile[] = [
     y: 4,
     w: 1,
     h: 1,
-    color: "bg-violet-600",
+    color: "bg-sky-500",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "Twitter",
+      iconSrc: "./twitter.svg",
+    },
   },
   {
     key: "o",
@@ -255,9 +271,13 @@ const cardMobile: ICardMobile[] = [
     y: 10,
     w: 1,
     h: 1,
-    color: "bg-rose-600",
+    color: "bg-pink-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "NestJS",
+      iconSrc: "./nestjs.svg",
+    },
   },
   {
     key: "r",
@@ -265,9 +285,14 @@ const cardMobile: ICardMobile[] = [
     y: 10,
     w: 1,
     h: 1,
-    color: "bg-sky-600",
+    color: "bg-white",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "React Vite",
+      textColor: "text-black",
+      iconSrc: "./vite.png",
+    },
   },
   {
     key: "s",
@@ -275,9 +300,13 @@ const cardMobile: ICardMobile[] = [
     y: 10,
     w: 1,
     h: 1,
-    color: "bg-stone-600",
+    color: "bg-teal-600	",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "TailwindCSS",
+      iconSrc: "./tailwindcss.svg",
+    },
   },
   {
     key: "t",
@@ -285,9 +314,13 @@ const cardMobile: ICardMobile[] = [
     y: 10,
     w: 1,
     h: 1,
-    color: "bg-lime-600",
+    color: "bg-blue-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "PostgreSQL",
+      iconSrc: "./postgresql.svg",
+    },
   },
 ];
 

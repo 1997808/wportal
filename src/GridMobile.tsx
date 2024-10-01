@@ -35,10 +35,13 @@ export const GridMobile = (props: { height: number, width: number, layout: any, 
 const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, ref) => {
   // @ts-expect-error xdd
   const { keyId, color, data } = restOfProps
-  let text, Icon
+  let text, textColor, Icon, iconSrc, imgSrc
   if (data) {
     Icon = data.Icon
     text = data.text
+    iconSrc = data.iconSrc
+    textColor = data.textColor
+    imgSrc = data.imgSrc
   }
 
   return (
@@ -51,7 +54,9 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
         transition={{ duration: 0.3 }}
         className={`${color} relative w-full h-full flex justify-center items-center`}>
         {data && data.type === 'icon' && <Icon className="w-1/2 h-1/2 text-white" />}
-        <div className='absolute bottom-0 left-0 px-2 py-1 text-sm text-white truncate'>
+        {data && data.type === 'icon-img' && <img src={iconSrc} className="w-1/2 h-1/2 text-white" />}
+        {data && data.type === 'img' && <img src={imgSrc} className="w-full h-full object-cover" />}
+        <div className={`absolute bottom-0 left-0 px-2 py-1 text-sm ${textColor ?? 'text-white'} truncate`}>
           {text ?? keyId}
         </div>
       </motion.div>
