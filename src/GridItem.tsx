@@ -26,7 +26,7 @@ export const GridItem = (props: { height: number, width: number, layout: any, it
       {items.map((card: never) => {
         return (
           // @ts-expect-error xdd
-          <WCard key={card.key} keyId={card.key} color={card.color} />
+          <WCard key={card.key} keyid={card.key} color={card.color} />
         )
       })}
     </GridLayout>
@@ -36,7 +36,7 @@ export const GridItem = (props: { height: number, width: number, layout: any, it
 // @ts-expect-error xdd
 const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, ref) => {
   // @ts-expect-error xdd
-  const { keyId, color } = restOfProps
+  const { keyid, color } = restOfProps
   return (
     // @ts-expect-error xdd
     <div style={style} ref={ref} key={key} className={[`p-1.5`, className].join(' ')} {...restOfProps}>
@@ -46,7 +46,7 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
         whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 0.3 }}
         className={`${color} w-full h-full`}>
-        {keyId}
+        {keyid}
       </motion.div>
       {children}
     </div>

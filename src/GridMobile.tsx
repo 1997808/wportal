@@ -1,6 +1,9 @@
 import { forwardRef } from 'react';
 import RGL, { WidthProvider } from "react-grid-layout";
 import { motion } from "framer-motion"
+import LiveTile from './lib/livetile';
+import { EmblaOptionsType } from 'embla-carousel'
+
 const GridLayout = WidthProvider(RGL);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -24,7 +27,7 @@ export const GridMobile = (props: { height: number, width: number, layout: any, 
       {items.map((card: never) => {
         return (
           // @ts-expect-error xdd
-          <WCard key={card.key} keyId={card.key} color={card.color} data={card.data} />
+          <WCard key={card.key} keyid={card.key} color={card.color} data={card.data} />
         )
       })}
     </GridLayout>
@@ -34,7 +37,7 @@ export const GridMobile = (props: { height: number, width: number, layout: any, 
 // @ts-expect-error xdd
 const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, ref) => {
   // @ts-expect-error xdd
-  const { keyId, color, data } = restOfProps
+  const { keyid, color, data } = restOfProps
   let text, textColor, Icon, iconSrc, imgSrc
   if (data) {
     Icon = data.Icon
@@ -43,6 +46,10 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
     textColor = data.textColor
     imgSrc = data.imgSrc
   }
+
+  const OPTIONS: EmblaOptionsType = { axis: 'y', dragFree: false, loop: true }
+  const SLIDE_COUNT = 5
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   return (
     // @ts-expect-error xdd
@@ -56,8 +63,9 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
         {data && data.type === 'icon' && <Icon className="w-1/2 h-1/2 text-white" />}
         {data && data.type === 'icon-img' && <img src={iconSrc} className="w-1/2 h-1/2 text-white" />}
         {data && data.type === 'img' && <img src={imgSrc} className="w-full h-full object-cover" />}
+        {data && data.type === 'text' && <LiveTile slides={SLIDES} options={OPTIONS} />}
         <div className={`absolute bottom-0 left-0 px-2 py-1 text-sm ${textColor ?? 'text-white'} truncate`}>
-          {text ?? keyId}
+          {text ?? keyid}
         </div>
       </motion.div>
       {children}
