@@ -118,8 +118,8 @@ const App = () => {
     <div className='relative min-w-screen w-full h-screen'>
       {/* <img src={Background} className='w-full h-screen object-cover' /> */}
       <div className='absolute top-0 left-0 w-screen min-h-screen px-4 flex flex-col gap-1 bg-black'>
-        <div className='py-1'></div>
-        <div className='flex justify-between items-center px-1'>
+        <div className='py-2'></div>
+        {/* <div className='flex justify-between items-center px-1'>
           <h1 className='text-3xl text-white font-light'>Start</h1>
           <div className='flex gap-2 items-center px-2 py-1 hover:bg-gray-500/50 bg-transparent duration-150 cursor-pointer' onClick={() => console.log('test')}>
             <div className='flex flex-col items-end'>
@@ -128,7 +128,7 @@ const App = () => {
             </div>
             <img src={UserIcon} className='w-10 h-10' />
           </div>
-        </div>
+        </div> */}
         <div className='relative grid-container grow flex flex-col w-full [&>*]:shrink-0' ref={gridRef}>
           {dimensions.height !== 0 && dimensions.width !== 0 && (
             <GridMobile height={dimensions.height} width={dimensions.width} layout={layoutMobile} items={cardMobile} />

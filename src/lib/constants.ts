@@ -1,5 +1,4 @@
 import {
-  FileText,
   Github,
   LinkedinIcon,
   LucideIcon,
@@ -101,7 +100,12 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-yellow-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "img",
+      text: "My blog",
+      textColor: "text-black",
+      imgSrc: "./blog.jpg",
+    },
   },
   {
     key: "b",
@@ -111,7 +115,12 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-blue-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "img",
+      text: "My personal finance tool",
+      textColor: "text-black",
+      imgSrc: "./finance.webp",
+    },
   },
 
   // 2x2 blocks
@@ -141,9 +150,9 @@ const cardMobile: ICardMobile[] = [
     y: 4,
     w: 2,
     h: 2,
-    color: "bg-orange-600",
+    color: "bg-lime-600",
     static: true,
-    data: { type: "icon", text: "Blog", Icon: FileText },
+    data: { type: "text", text: "Text" },
   },
   {
     key: "i",
@@ -161,9 +170,9 @@ const cardMobile: ICardMobile[] = [
     y: 6,
     w: 2,
     h: 2,
-    color: "bg-lime-600",
+    color: "bg-orange-600",
     static: true,
-    data: { type: "img", text: "Me", imgSrc: "./excited.webp" },
+    data: { type: "img", text: "Work", imgSrc: "./vpbank.jpg" },
   },
   {
     key: "g",
@@ -213,7 +222,7 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-purple-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: { type: "img", text: "Gallery", imgSrc: "./excited.webp" },
   },
 
   // 1x1 blocks
@@ -251,9 +260,14 @@ const cardMobile: ICardMobile[] = [
     y: 5,
     w: 1,
     h: 1,
-    color: "bg-emerald-600",
+    color: "bg-white",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "Notion",
+      textColor: "text-black",
+      iconSrc: "./notion.svg",
+    },
   },
   {
     key: "p",
@@ -261,9 +275,13 @@ const cardMobile: ICardMobile[] = [
     y: 5,
     w: 1,
     h: 1,
-    color: "bg-fuchsia-600",
+    color: "bg-orange-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: {
+      type: "icon-img",
+      text: "Reddit",
+      iconSrc: "./reddit.svg",
+    },
   },
   {
     key: "q",
@@ -320,6 +338,63 @@ const cardMobile: ICardMobile[] = [
       type: "icon-img",
       text: "PostgreSQL",
       iconSrc: "./postgresql.svg",
+    },
+  },
+  {
+    key: "m2",
+    x: 2,
+    y: 15,
+    w: 1,
+    h: 1,
+    color: "bg-black",
+    static: true,
+    data: {
+      type: "icon-img",
+      text: "Chess.com",
+      iconSrc: "./chess.svg",
+    },
+  },
+  {
+    key: "n2",
+    x: 3,
+    y: 15,
+    w: 1,
+    h: 1,
+    color: "bg-sky-500",
+    static: true,
+    data: {
+      type: "img",
+      text: "RIOT",
+      imgSrc: "./Lule.webp",
+    },
+  },
+  {
+    key: "o2",
+    x: 2,
+    y: 16,
+    w: 1,
+    h: 1,
+    color: "bg-white",
+    static: true,
+    data: {
+      type: "icon-img",
+      text: "Notion",
+      textColor: "text-black",
+      iconSrc: "./notion.svg",
+    },
+  },
+  {
+    key: "p2",
+    x: 3,
+    y: 16,
+    w: 1,
+    h: 1,
+    color: "bg-orange-600",
+    static: true,
+    data: {
+      type: "icon-img",
+      text: "Reddit",
+      iconSrc: "./reddit.svg",
     },
   },
 ];
