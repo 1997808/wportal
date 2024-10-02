@@ -4,8 +4,10 @@ import Background from './assets/windows.jpg'
 import UserIcon from './assets/excited.webp'
 import useWindowDimensions from './lib/useWindowDimensions';
 import { GridItem } from './GridItem';
-import { cardData, cardData2, cardMobile } from './lib/constants';
+import { cardData, cardData2 } from './lib/constants';
+import { cardMobile } from './lib/constantsMobile';
 import { GridMobile } from './GridMobile';
+
 
 const App = () => {
   const [windows, setWindows] = useState(useWindowDimensions());
