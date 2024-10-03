@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import useEmblaCarousel from 'embla-carousel-react'
 import './livetile.css'
+import { ICardDataSlides } from './constantsMobile'
 
 type PropType = {
-  slides: number[]
+  slides: ICardDataSlides[]
   options?: EmblaOptionsType
 }
 
@@ -18,11 +20,22 @@ const LiveTile: React.FC<PropType> = (props) => {
     <section className="embla relative">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((index) => (
-            <div className="embla__slide" key={index}>
-              <div className="embla__slide__number">{index + 1}</div>
-            </div>
-          ))}
+          {slides.map((item, index) => {
+            const { type, text, textColor, Icon, iconSrc, imgSrc } = item
+            return (
+              <div className="embla__slide" key={index}>
+                <div
+                  className={`relative w-full h-full flex justify-center items-center`}>
+                  {type === 'icon' && Icon && <Icon className="w-1/2 h-1/2 text-white" />}
+                  {type === 'icon-img' && <img src={iconSrc} className="w-1/2 h-1/2 text-white" />}
+                  {type === 'img' && <img src={imgSrc} className="w-full h-full object-cover" />}
+                  {/* <div className={`absolute bottom-0 left-0 px-2 py-1 text-sm ${textColor ?? 'text-white'} truncate`}>
+                    {text}
+                  </div> */}
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
       <div className='absolute top-0 left-0 w-full h-full'>

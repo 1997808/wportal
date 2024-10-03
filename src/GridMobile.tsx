@@ -38,18 +38,17 @@ export const GridMobile = (props: { height: number, width: number, layout: any, 
 const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, ref) => {
   // @ts-expect-error xdd
   const { keyid, color, data } = restOfProps
-  let text, textColor, Icon, iconSrc, imgSrc
+  let text, textColor, Icon, iconSrc, imgSrc, slides
   if (data) {
     Icon = data.Icon
     text = data.text
     iconSrc = data.iconSrc
     textColor = data.textColor
     imgSrc = data.imgSrc
+    slides = data.slides
   }
 
   const OPTIONS: EmblaOptionsType = { axis: 'y', dragFree: false, loop: true }
-  const SLIDE_COUNT = 5
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
   return (
     // @ts-expect-error xdd
@@ -63,7 +62,7 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
         {data && data.type === 'icon' && <Icon className="w-1/2 h-1/2 text-white" />}
         {data && data.type === 'icon-img' && <img src={iconSrc} className="w-1/2 h-1/2 text-white" />}
         {data && data.type === 'img' && <img src={imgSrc} className="w-full h-full object-cover" />}
-        {data && data.type === 'text' && <LiveTile slides={SLIDES} options={OPTIONS} />}
+        {data && data.type === 'live' && <LiveTile slides={slides} options={OPTIONS} />}
         <div className={`absolute bottom-0 left-0 px-2 py-1 text-sm ${textColor ?? 'text-white'} truncate`}>
           {text ?? keyid}
         </div>

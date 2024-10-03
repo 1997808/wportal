@@ -5,9 +5,22 @@ import {
   Phone,
   ScrollText,
   Mail,
+  Settings,
+  NotebookPen,
+  CloudSun,
 } from "lucide-react";
 
-type TCardDataType = "icon" | "icon-img" | "img" | "text";
+type TCardDataType = "icon" | "icon-img" | "img" | "text" | "live";
+type TCardDataSlideType = "icon" | "icon-img" | "img" | "text";
+
+export interface ICardDataSlides {
+  type: TCardDataSlideType;
+  text?: string;
+  textColor?: string;
+  Icon?: LucideIcon;
+  iconSrc?: string;
+  imgSrc?: string;
+}
 
 export interface ICardMobile {
   key: string;
@@ -24,6 +37,7 @@ export interface ICardMobile {
     Icon?: LucideIcon;
     iconSrc?: string;
     imgSrc?: string;
+    slides?: ICardDataSlides[];
   };
 }
 
@@ -38,10 +52,13 @@ const cardMobile: ICardMobile[] = [
     color: "bg-yellow-600",
     static: true,
     data: {
-      type: "img",
+      type: "live",
       text: "My blog",
       textColor: "text-black",
-      imgSrc: "./blog.jpg",
+      slides: [
+        { type: "img", text: "Note", imgSrc: "./blog.jpg" },
+        { type: "img", text: "Note", imgSrc: "./blog-1.webp" },
+      ],
     },
   },
   {
@@ -129,7 +146,7 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-pink-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: { type: "icon", text: "Weather", Icon: CloudSun },
   },
   {
     key: "k",
@@ -139,7 +156,7 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-gray-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: { type: "icon", text: "Setting", Icon: Settings },
   },
   {
     key: "l",
@@ -149,7 +166,7 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-amber-600",
     static: true,
-    data: { type: "text", text: "Text" },
+    data: { type: "icon", text: "Note", Icon: NotebookPen },
   },
   {
     key: "e",
@@ -159,7 +176,16 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-purple-600",
     static: true,
-    data: { type: "img", text: "Gallery", imgSrc: "./excited.webp" },
+    data: {
+      type: "live",
+      text: "Gallery",
+      imgSrc: "./excited.webp",
+      slides: [
+        { type: "img", text: "Note", imgSrc: "./excited.webp" },
+        { type: "img", text: "Note", imgSrc: "./user-1.jpg" },
+        { type: "img", text: "Note", imgSrc: "./user-2.jpg" },
+      ],
+    },
   },
 
   // 1x1 blocks
