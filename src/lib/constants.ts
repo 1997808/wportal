@@ -1,9 +1,13 @@
 import {
+  CloudSun,
   Github,
   LinkedinIcon,
   LucideIcon,
+  Mail,
+  NotebookPen,
   Phone,
   ScrollText,
+  Settings,
 } from "lucide-react";
 
 type TCardDataType = "icon" | "icon-img" | "img" | "text";
@@ -35,7 +39,12 @@ const cardData = [
     h: 2,
     color: "bg-red-600",
     static: true,
-    data: {},
+    data: {
+      type: "img",
+      text: "My blog",
+      textColor: "text-black",
+      imgSrc: "./blog.jpg",
+    },
   }, // 2x2 block
   {
     key: "k",
@@ -65,7 +74,12 @@ const cardData = [
     h: 2,
     color: "bg-blue-600",
     static: true,
-    data: {},
+    data: {
+      type: "img",
+      text: "My personal finance tool",
+      textColor: "text-black",
+      imgSrc: "./finance.webp",
+    },
   }, // 2x2 block
   {
     key: "c",
@@ -73,9 +87,13 @@ const cardData = [
     y: 0,
     w: 1,
     h: 1,
-    color: "bg-yellow-600",
+    color: "bg-pink-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "NestJS",
+      iconSrc: "./nestjs.svg",
+    },
   }, // 1x1 block
   {
     key: "d",
@@ -83,9 +101,14 @@ const cardData = [
     y: 0,
     w: 1,
     h: 1,
-    color: "bg-green-600",
+    color: "bg-white",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "React Vite",
+      textColor: "text-black",
+      iconSrc: "./vite.png",
+    },
   }, // 1x1 block
   {
     key: "e",
@@ -93,9 +116,9 @@ const cardData = [
     y: 0,
     w: 2,
     h: 1,
-    color: "bg-blue-600",
+    color: "bg-green-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "GitHub", Icon: Github },
   }, // 2x1 block
   {
     key: "e2",
@@ -103,9 +126,9 @@ const cardData = [
     y: 1,
     w: 2,
     h: 1,
-    color: "bg-purple-600",
+    color: "bg-blue-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "LinkedIn", Icon: LinkedinIcon },
   }, // 2x1 block
   {
     key: "c2",
@@ -135,7 +158,7 @@ const cardData = [
     h: 1,
     color: "bg-pink-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "Phone", Icon: Phone },
   }, // 1x1 block
   {
     key: "h",
@@ -143,9 +166,9 @@ const cardData = [
     y: 2,
     w: 2,
     h: 1,
-    color: "bg-teal-600",
+    color: "bg-indigo-600",
     static: true,
-    data: {},
+    data: { type: "img", text: "Work", imgSrc: "./vpbank.jpg" },
   }, // 2x1 block
   {
     key: "i",
@@ -153,7 +176,7 @@ const cardData = [
     y: 2,
     w: 1,
     h: 1,
-    color: "bg-indigo-600",
+    color: "bg-teal-600",
     static: true,
     data: {},
   }, // 1x1 block
@@ -175,7 +198,7 @@ const cardData = [
     h: 1,
     color: "bg-rose-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "Mail", Icon: Mail },
   }, // 2x1 block
   {
     key: "n",
@@ -183,9 +206,9 @@ const cardData = [
     y: 3,
     w: 2,
     h: 1,
-    color: "bg-fuchsia-600",
+    color: "bg-teal-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "Download Resume", Icon: ScrollText },
   }, // 1x1 block
   {
     key: "p",
@@ -205,7 +228,7 @@ const cardData = [
     h: 1,
     color: "bg-yellow-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "Weather", Icon: CloudSun },
   }, // 2x1 block
   {
     key: "r",
@@ -228,7 +251,11 @@ const cardData2 = [
     h: 2,
     color: "bg-red-600",
     static: true,
-    data: {},
+    data: {
+      type: "img",
+      text: "Gallery",
+      imgSrc: "./user-2.jpg",
+    },
   }, // 2x2 block
   {
     key: "t2",
@@ -286,7 +313,7 @@ const cardData2 = [
     y: 0,
     w: 2,
     h: 1,
-    color: "bg-purple-600",
+    color: "bg-teal-600",
     static: true,
     data: {},
   }, // 2x1 block
@@ -296,9 +323,9 @@ const cardData2 = [
     y: 1,
     w: 2,
     h: 1,
-    color: "bg-purple-600",
+    color: "bg-amber-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "Note", Icon: NotebookPen },
   }, // 2x1 block
   {
     key: "t9",
@@ -346,9 +373,9 @@ const cardData2 = [
     y: 2,
     w: 2,
     h: 1,
-    color: "bg-teal-600",
+    color: "bg-gray-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "Setting", Icon: Settings },
   }, // 2x1 block
   {
     key: "t14",

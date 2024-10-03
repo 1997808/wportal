@@ -26,7 +26,7 @@ export const GridItem = (props: { height: number, width: number, layout: any, it
       {items.map((card: never) => {
         return (
           // @ts-expect-error xdd
-          <WCard key={card.key} keyid={card.key} color={card.color} />
+          <WCard key={card.key} keyid={card.key} color={card.color} data={card.data} />
         )
       })}
     </GridLayout>
@@ -36,7 +36,16 @@ export const GridItem = (props: { height: number, width: number, layout: any, it
 // @ts-expect-error xdd
 const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, ref) => {
   // @ts-expect-error xdd
-  const { keyid, color } = restOfProps
+  const { keyid, color, data } = restOfProps
+  let text, textColor, Icon, iconSrc, imgSrc
+  if (data) {
+    Icon = data.Icon
+    text = data.text
+    iconSrc = data.iconSrc
+    textColor = data.textColor
+    imgSrc = data.imgSrc
+  }
+
   return (
     // @ts-expect-error xdd
     <div style={style} ref={ref} key={key} className={[`p-1.5`, className].join(' ')} {...restOfProps}>
@@ -45,8 +54,13 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
         whileHover={{ scale: 1.05 }}
         whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 0.3 }}
-        className={`${color} w-full h-full`}>
-        {keyid}
+        className={`${color} relative w-full h-full flex justify-center items-center`}>
+        {data && data.type === 'icon' && <Icon className="w-1/2 h-1/2 text-white" />}
+        {data && data.type === 'icon-img' && <img src={iconSrc} className="w-1/2 h-1/2 text-white" />}
+        {data && data.type === 'img' && <img src={imgSrc} className="w-full h-full object-cover" />}
+        <div className={`absolute bottom-0 left-0 px-2 py-1 text-xs ${textColor ?? 'text-white'} truncate`}>
+          {text ?? keyid}
+        </div>
       </motion.div>
       {children}
     </div>
