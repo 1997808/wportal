@@ -52,9 +52,13 @@ const cardData = [
     y: 0,
     w: 1,
     h: 1,
-    color: "bg-cyan-600",
+    color: "bg-blue-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Docker",
+      iconSrc: "./docker.svg",
+    },
   }, // 1x1 block
   {
     key: "l",
@@ -62,9 +66,13 @@ const cardData = [
     y: 0,
     w: 1,
     h: 1,
-    color: "bg-amber-600",
+    color: "bg-purple-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Nginx",
+      iconSrc: "./nginx.svg",
+    },
   }, // 1x1 block
   {
     key: "b",
@@ -126,7 +134,7 @@ const cardData = [
     y: 1,
     w: 2,
     h: 1,
-    color: "bg-blue-600",
+    color: "bg-indigo-600",
     static: true,
     data: { type: "icon", text: "LinkedIn", Icon: LinkedinIcon },
   }, // 2x1 block
@@ -136,9 +144,14 @@ const cardData = [
     y: 1,
     w: 1,
     h: 1,
-    color: "bg-yellow-600",
+    color: "bg-white",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "ExpressJS",
+      textColor: "text-black",
+      iconSrc: "./expressjs.svg",
+    },
   }, // 1x1 block
   {
     key: "d2",
@@ -146,9 +159,13 @@ const cardData = [
     y: 1,
     w: 1,
     h: 1,
-    color: "bg-green-600",
+    color: "bg-gray-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "NextJS",
+      iconSrc: "./nextjs.svg",
+    },
   }, // 1x1 block
   {
     key: "f",
@@ -176,9 +193,13 @@ const cardData = [
     y: 2,
     w: 1,
     h: 1,
-    color: "bg-teal-600",
+    color: "bg-green-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Redis",
+      iconSrc: "./redis.svg",
+    },
   }, // 1x1 block
   {
     key: "j",
@@ -186,9 +207,13 @@ const cardData = [
     y: 2,
     w: 1,
     h: 1,
-    color: "bg-lime-600",
+    color: "bg-teal-600	",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "TailwindCSS",
+      iconSrc: "./tailwindcss.svg",
+    },
   }, // 1x1 block
   {
     key: "m",
@@ -216,9 +241,13 @@ const cardData = [
     y: 3,
     w: 1,
     h: 1,
-    color: "bg-red-600",
+    color: "bg-blue-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "PostgreSQL",
+      iconSrc: "./postgresql.svg",
+    },
   }, // 1x1 block
   {
     key: "q",
@@ -236,9 +265,13 @@ const cardData = [
     y: 3,
     w: 1,
     h: 1,
-    color: "bg-green-600",
+    color: "bg-blue-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Digital Ocean",
+      iconSrc: "./digital-ocean.svg",
+    },
   }, // 1x1 block
 ];
 
@@ -257,45 +290,49 @@ const cardData2 = [
       imgSrc: "./user-2.jpg",
     },
   }, // 2x2 block
-  {
-    key: "t2",
-    x: 6,
-    y: 0,
-    w: 1,
-    h: 1,
-    color: "bg-cyan-600",
-    static: true,
-    data: {},
-  }, // 1x1 block
-  {
-    key: "t3",
-    x: 7,
-    y: 0,
-    w: 1,
-    h: 1,
-    color: "bg-amber-600",
-    static: true,
-    data: {},
-  }, // 1x1 block
-  {
-    key: "t4",
-    x: 6,
-    y: 1,
-    w: 2,
-    h: 2,
-    color: "bg-blue-600",
-    static: true,
-    data: {},
-  }, // 2x2 block
+  // {
+  //   key: "t2",
+  //   x: 6,
+  //   y: 0,
+  //   w: 1,
+  //   h: 1,
+  //   color: "bg-cyan-600",
+  //   static: true,
+  //   data: {},
+  // }, // 1x1 block
+  // {
+  //   key: "t3",
+  //   x: 7,
+  //   y: 0,
+  //   w: 1,
+  //   h: 1,
+  //   color: "bg-amber-600",
+  //   static: true,
+  //   data: {},
+  // }, // 1x1 block
+  // {
+  //   key: "t4",
+  //   x: 6,
+  //   y: 1,
+  //   w: 2,
+  //   h: 2,
+  //   color: "bg-blue-600",
+  //   static: true,
+  //   data: {},
+  // }, // 2x2 block
   {
     key: "t5",
     x: 2,
     y: 0,
     w: 1,
     h: 1,
-    color: "bg-yellow-600",
+    color: "bg-black",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Chess.com",
+      iconSrc: "./chess.svg",
+    },
   }, // 1x1 block
   {
     key: "t6",
@@ -303,19 +340,28 @@ const cardData2 = [
     y: 0,
     w: 1,
     h: 1,
-    color: "bg-green-600",
+    color: "bg-sky-500",
     static: true,
-    data: {},
+    data: {
+      type: "img",
+      text: "",
+      imgSrc: "./Lule.webp",
+    },
   }, // 1x1 block
   {
     key: "t7",
     x: 4,
     y: 0,
-    w: 2,
+    w: 1,
     h: 1,
-    color: "bg-teal-600",
+    color: "bg-white",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "",
+      textColor: "text-black",
+      iconSrc: "./hololive.svg",
+    },
   }, // 2x1 block
   {
     key: "t8",
@@ -333,29 +379,37 @@ const cardData2 = [
     y: 1,
     w: 1,
     h: 1,
-    color: "bg-yellow-600",
+    color: "bg-orange-600",
     static: true,
-    data: {},
+    data: {
+      type: "img",
+      text: "",
+      imgSrc: "./mariokart.png",
+    },
   }, // 1x1 block
-  {
-    key: "t10",
-    x: 5,
-    y: 1,
-    w: 1,
-    h: 1,
-    color: "bg-green-600",
-    static: true,
-    data: {},
-  }, // 1x1 block
+  // {
+  //   key: "t10",
+  //   x: 5,
+  //   y: 1,
+  //   w: 1,
+  //   h: 1,
+  //   color: "bg-green-600",
+  //   static: true,
+  //   data: {},
+  // }, // 1x1 block
   {
     key: "t11",
     x: 0,
     y: 2,
     w: 1,
     h: 1,
-    color: "bg-pink-600",
+    color: "bg-indigo-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Discord",
+      iconSrc: "./discord.svg",
+    },
   }, // 1x1 block
   {
     key: "t12",
@@ -363,9 +417,13 @@ const cardData2 = [
     y: 2,
     w: 1,
     h: 1,
-    color: "bg-orange-600",
+    color: "bg-sky-500",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Twitter",
+      iconSrc: "./twitter.svg",
+    },
   }, // 1x1 block
   {
     key: "t13",
@@ -373,39 +431,39 @@ const cardData2 = [
     y: 2,
     w: 2,
     h: 1,
-    color: "bg-gray-600",
+    color: "bg-white",
     static: true,
-    data: { type: "icon", text: "Setting", Icon: Settings },
+    data: {},
   }, // 2x1 block
-  {
-    key: "t14",
-    x: 4,
-    y: 2,
-    w: 1,
-    h: 1,
-    color: "bg-indigo-600",
-    static: true,
-    data: {},
-  }, // 1x1 block
-  {
-    key: "t15",
-    x: 5,
-    y: 2,
-    w: 1,
-    h: 1,
-    color: "bg-lime-600",
-    static: true,
-    data: {},
-  }, // 1x1 block
+  // {
+  //   key: "t14",
+  //   x: 4,
+  //   y: 2,
+  //   w: 1,
+  //   h: 1,
+  //   color: "bg-indigo-600",
+  //   static: true,
+  //   data: {},
+  // }, // 1x1 block
+  // {
+  //   key: "t15",
+  //   x: 5,
+  //   y: 2,
+  //   w: 1,
+  //   h: 1,
+  //   color: "bg-lime-600",
+  //   static: true,
+  //   data: {},
+  // }, // 1x1 block
   {
     key: "t16",
     x: 0,
     y: 3,
     w: 2,
     h: 1,
-    color: "bg-rose-600",
+    color: "bg-gray-600",
     static: true,
-    data: {},
+    data: { type: "icon", text: "Setting", Icon: Settings },
   }, // 2x1 block
   {
     key: "t17",
@@ -413,9 +471,14 @@ const cardData2 = [
     y: 3,
     w: 1,
     h: 1,
-    color: "bg-fuchsia-600",
+    color: "bg-white",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Notion",
+      textColor: "text-black",
+      iconSrc: "./notion.svg",
+    },
   }, // 1x1 block
   {
     key: "t18",
@@ -423,40 +486,44 @@ const cardData2 = [
     y: 3,
     w: 1,
     h: 1,
-    color: "bg-blue-600",
+    color: "bg-orange-600",
     static: true,
-    data: {},
+    data: {
+      type: "icon-img",
+      text: "Reddit",
+      iconSrc: "./reddit.svg",
+    },
   }, // 1x1 block
-  {
-    key: "t19",
-    x: 4,
-    y: 3,
-    w: 1,
-    h: 1,
-    color: "bg-red-600",
-    static: true,
-    data: {},
-  }, // 1x1 block
-  {
-    key: "t20",
-    x: 5,
-    y: 3,
-    w: 2,
-    h: 1,
-    color: "bg-yellow-600",
-    static: true,
-    data: {},
-  }, // 2x1 block
-  {
-    key: "t21",
-    x: 7,
-    y: 3,
-    w: 1,
-    h: 1,
-    color: "bg-green-600",
-    static: true,
-    data: {},
-  }, // 1x1 block
+  // {
+  //   key: "t19",
+  //   x: 4,
+  //   y: 3,
+  //   w: 1,
+  //   h: 1,
+  //   color: "bg-red-600",
+  //   static: true,
+  //   data: {},
+  // }, // 1x1 block
+  // {
+  //   key: "t20",
+  //   x: 5,
+  //   y: 3,
+  //   w: 2,
+  //   h: 1,
+  //   color: "bg-yellow-600",
+  //   static: true,
+  //   data: {},
+  // }, // 2x1 block
+  // {
+  //   key: "t21",
+  //   x: 7,
+  //   y: 3,
+  //   w: 1,
+  //   h: 1,
+  //   color: "bg-green-600",
+  //   static: true,
+  //   data: {},
+  // }, // 1x1 block
 ];
 
 export { cardData, cardData2 };

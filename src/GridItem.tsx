@@ -5,13 +5,13 @@ import { motion } from "framer-motion"
 const GridLayout = WidthProvider(RGL);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const GridItem = (props: { height: number, width: number, layout: any, items: any }) => {
-  const { height, width, layout, items } = props //from grid container
-  const gridWidth = height * 2
+export const GridItem = (props: { height: number, width: number, layout: any, column: number, items: any }) => {
+  const { height, width, layout, column = 8, items } = props //from grid container
+  const gridWidth = height / 4 * column
 
   return gridWidth && (
     <GridLayout
-      cols={8}
+      cols={column}
       className={`overflow-hidden`}
       layout={layout}
       rowHeight={height / 4}

@@ -98,7 +98,7 @@ const App = () => {
           <h1 className='text-7xl text-white font-light'>Start</h1>
           <div className='flex gap-4 items-center px-2 py-1 hover:bg-gray-500/50 bg-transparent duration-150 cursor-pointer' onClick={() => console.log('test')}>
             <div className='flex flex-col items-end gap-1'>
-              <p className='text-3xl text-white font-light'>John Doe</p>
+              <p className='text-3xl text-white font-light'>Khanh Le</p>
               <p className='text-lg text-white font-light'>Developer</p>
             </div>
             <img src={UserIcon} className='w-16 h-16' />
@@ -107,10 +107,10 @@ const App = () => {
         <section className='relative grid-container grow flex gap-16 w-screen overflow-x-scroll [&>*]:shrink-0' ref={gridRef}>
           <div className='px-16'></div>
           {dimensions.height !== 0 && dimensions.width !== 0 && (
-            <GridItem height={dimensions.height} width={dimensions.width} layout={layout} items={cardData} />
+            <GridItem height={dimensions.height} width={dimensions.width} layout={layout} column={8} items={cardData} />
           )}
           {dimensions.height !== 0 && dimensions.width !== 0 && (
-            <GridItem height={dimensions.height} width={dimensions.width} layout={layout2} items={cardData2} />
+            <GridItem height={dimensions.height} width={dimensions.width} layout={layout2} column={5} items={cardData2} />
           )}
           <div className='px-16'></div>
         </section>
