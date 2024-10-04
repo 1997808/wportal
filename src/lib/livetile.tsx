@@ -13,8 +13,7 @@ type PropType = {
 
 const LiveTile: React.FC<PropType> = (props) => {
   const { slides, options } = props
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
+  const [emblaRef] = useEmblaCarousel(options, [Autoplay()])
 
   return (
     <section className="embla relative">

@@ -50,6 +50,10 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
 
   const OPTIONS: EmblaOptionsType = { axis: 'y', dragFree: false, loop: true }
 
+  const handleNavigation = (url: string) => {
+    window.open(url, '_blank');  // Open URL in a new tab
+  };
+
   return (
     // @ts-expect-error xdd
     <div style={style} ref={ref} key={key} className={[`p-1`, className].join(' ')} {...restOfProps}>
@@ -58,6 +62,12 @@ const WCard = forwardRef(({ style, className, key, children, ...restOfProps }, r
         whileHover={{ scale: 1.02 }}
         whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ duration: 0.3 }}
+        onClick={() => {
+          if (!data.link) {
+            return
+          }
+          handleNavigation(data.link)
+        }}
         className={`${color} relative w-full h-full flex justify-center items-center`}>
         {data && data.type === 'icon' && <Icon className="w-1/2 h-1/2 text-white" />}
         {data && data.type === 'icon-img' && <img src={iconSrc} className="w-1/2 h-1/2 text-white" />}

@@ -9,6 +9,7 @@ import {
   ScrollText,
   Settings,
 } from "lucide-react";
+import { ICardDataSlides } from "./constantsMobile";
 
 type TCardDataType = "icon" | "icon-img" | "img" | "text";
 
@@ -27,6 +28,8 @@ export interface ICard {
     Icon?: LucideIcon;
     iconSrc?: string;
     imgSrc?: string;
+    link?: string;
+    slides?: ICardDataSlides[];
   };
 }
 
@@ -43,6 +46,7 @@ const cardData = [
       type: "live",
       text: "My blog",
       textColor: "text-black",
+      link: "https://blog.karuhi.com/",
       slides: [
         { type: "img", text: "Note", imgSrc: "./blog.jpg" },
         { type: "img", text: "Note", imgSrc: "./blog-1.webp" },
@@ -89,6 +93,7 @@ const cardData = [
       type: "img",
       text: "My personal finance tool",
       textColor: "text-black",
+      link: "https://dev.karuhi.com/",
       imgSrc: "./finance.webp",
     },
   }, // 2x2 block
@@ -129,7 +134,12 @@ const cardData = [
     h: 1,
     color: "bg-green-600",
     static: true,
-    data: { type: "icon", text: "GitHub", Icon: Github },
+    data: {
+      type: "icon",
+      text: "GitHub",
+      link: "https://github.com/1997808",
+      Icon: Github,
+    },
   }, // 2x1 block
   {
     key: "e2",
@@ -139,7 +149,12 @@ const cardData = [
     h: 1,
     color: "bg-indigo-600",
     static: true,
-    data: { type: "icon", text: "LinkedIn", Icon: LinkedinIcon },
+    data: {
+      type: "icon",
+      text: "LinkedIn",
+      link: "https://www.linkedin.com/in/khanhduyle222/",
+      Icon: LinkedinIcon,
+    },
   }, // 2x1 block
   {
     key: "c2",

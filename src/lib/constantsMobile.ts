@@ -37,6 +37,7 @@ export interface ICardMobile {
     Icon?: LucideIcon;
     iconSrc?: string;
     imgSrc?: string;
+    link?: string;
     slides?: ICardDataSlides[];
   };
 }
@@ -55,6 +56,7 @@ const cardMobile: ICardMobile[] = [
       type: "live",
       text: "My blog",
       textColor: "text-black",
+      link: "https://blog.karuhi.com/",
       slides: [
         { type: "img", text: "Note", imgSrc: "./blog.jpg" },
         { type: "img", text: "Note", imgSrc: "./blog-1.webp" },
@@ -73,6 +75,7 @@ const cardMobile: ICardMobile[] = [
       type: "img",
       text: "My personal finance tool",
       textColor: "text-black",
+      link: "https://dev.karuhi.com/",
       imgSrc: "./finance.webp",
     },
   },
@@ -106,7 +109,12 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-green-600",
     static: true,
-    data: { type: "icon", text: "GitHub", Icon: Github },
+    data: {
+      type: "icon",
+      text: "GitHub",
+      link: "https://github.com/1997808",
+      Icon: Github,
+    },
   },
   {
     key: "i",
@@ -116,7 +124,12 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-indigo-600",
     static: true,
-    data: { type: "icon", text: "LinkedIn", Icon: LinkedinIcon },
+    data: {
+      type: "icon",
+      text: "LinkedIn",
+      link: "https://www.linkedin.com/in/khanhduyle222/",
+      Icon: LinkedinIcon,
+    },
   },
   {
     key: "j",
