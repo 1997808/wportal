@@ -40,10 +40,13 @@ const cardData = [
     color: "bg-red-600",
     static: true,
     data: {
-      type: "img",
+      type: "live",
       text: "My blog",
       textColor: "text-black",
-      imgSrc: "./blog.jpg",
+      slides: [
+        { type: "img", text: "Note", imgSrc: "./blog.jpg" },
+        { type: "img", text: "Note", imgSrc: "./blog-1.webp" },
+      ],
     },
   }, // 2x2 block
   {
@@ -233,7 +236,14 @@ const cardData = [
     h: 1,
     color: "bg-teal-600",
     static: true,
-    data: { type: "icon", text: "Download Resume", Icon: ScrollText },
+    data: {
+      type: "live",
+      text: "Download Resume",
+      slides: [
+        { type: "icon", text: "", Icon: ScrollText },
+        { type: "text", text: "Site still in development 10/2024" },
+      ],
+    },
   }, // 1x1 block
   {
     key: "p",
@@ -285,9 +295,14 @@ const cardData2 = [
     color: "bg-red-600",
     static: true,
     data: {
-      type: "img",
+      type: "live",
       text: "Gallery",
-      imgSrc: "./user-2.jpg",
+      imgSrc: "./excited.webp",
+      slides: [
+        { type: "img", text: "Note", imgSrc: "./excited.webp" },
+        { type: "img", text: "Note", imgSrc: "./user-1.jpg" },
+        { type: "img", text: "Note", imgSrc: "./user-2.jpg" },
+      ],
     },
   }, // 2x2 block
   // {

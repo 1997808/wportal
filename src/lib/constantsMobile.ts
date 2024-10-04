@@ -136,7 +136,14 @@ const cardMobile: ICardMobile[] = [
     h: 2,
     color: "bg-teal-600",
     static: true,
-    data: { type: "icon", text: "Download Resume", Icon: ScrollText },
+    data: {
+      type: "live",
+      text: "Download Resume",
+      slides: [
+        { type: "icon", text: "", Icon: ScrollText },
+        { type: "text", text: "Site still in development 10/2024" },
+      ],
+    },
   },
   {
     key: "h",

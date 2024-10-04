@@ -29,6 +29,7 @@ const LiveTile: React.FC<PropType> = (props) => {
                   {type === 'icon' && Icon && <Icon className="w-1/2 h-1/2 text-white" />}
                   {type === 'icon-img' && <img src={iconSrc} className="w-1/2 h-1/2 text-white" />}
                   {type === 'img' && <img src={imgSrc} className="w-full h-full object-cover" />}
+                  {type === 'text' && <p className={`${textColor ?? 'text-white'} w-full h-full text-sm px-4 py-2`}>{text}</p>}
                   {/* <div className={`absolute bottom-0 left-0 px-2 py-1 text-sm ${textColor ?? 'text-white'} truncate`}>
                     {text}
                   </div> */}
